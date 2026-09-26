@@ -1,0 +1,251 @@
+/* =========================================================
+   TOKENS — paleta, tipografia e espaçamento
+   ========================================================= */
+:root {
+  --ink: #1E2A25;         /* texto principal, quase preto-esverdeado */
+  --paper: #F1EFE4;       /* fundo, papel levemente amarelado */
+  --paper-alt: #FFFFFF;   /* branco para respiros e cartão da foto */
+  --line: #C9C2AC;        /* linhas e bordas discretas */
+  --accent: #3F6A5E;      /* verde-petróleo — destaque principal */
+  --accent-gold: #B8862E; /* dourado — destaque secundário */
+
+  --fonte-titulo: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --fonte-corpo: 'Trebuchet MS', 'Segoe UI', Verdana, sans-serif;
+
+  --largura-max: 760px;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--fonte-corpo);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+header,
+main,
+footer {
+  max-width: var(--largura-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 24px 0 0 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover,
+a:focus-visible {
+  border-bottom-color: var(--accent);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+header {
+  padding-top: 40px;
+}
+
+.identidade {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.foto-perfil {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  background-color: var(--paper-alt);
+  flex-shrink: 0;
+}
+
+/* avatar de iniciais usado quando a foto não é encontrada (ver script.js) */
+.foto-perfil.sem-imagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte-titulo);
+  font-size: 42px;
+  color: var(--paper-alt);
+  background-color: var(--accent);
+}
+
+.dados-pessoais h1 {
+  font-family: var(--fonte-titulo);
+  font-size: 2.2rem;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.3px;
+}
+
+.cargo-pretendido {
+  margin: 0 0 12px 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.contato {
+  margin: 0 0 6px 0;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.contato span:not(:last-child)::after {
+  content: "·";
+  margin-left: 6px;
+  color: var(--line);
+}
+
+.links {
+  margin: 0;
+  display: flex;
+  gap: 16px;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+main {
+  padding-top: 32px;
+  padding-bottom: 16px;
+}
+
+section {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+
+section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  margin: 0 0 16px 0;
+  color: var(--ink);
+}
+
+h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  margin: 18px 0 4px 0;
+}
+
+h3:first-of-type {
+  margin-top: 0;
+}
+
+section p {
+  margin: 4px 0 12px 0;
+}
+
+section ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+section li {
+  margin-bottom: 8px;
+}
+
+strong {
+  color: var(--accent-gold);
+}
+
+video {
+  max-width: 100%;
+  border: 1px solid var(--line);
+  display: block;
+  margin-top: 12px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer {
+  padding: 24px 0 48px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+footer p {
+  margin: 0 0 6px 0;
+}
+
+.acoes-footer {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.acoes-footer button {
+  font-family: var(--fonte-corpo);
+  font-size: 0.9rem;
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  background-color: transparent;
+  color: var(--accent);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.acoes-footer button:hover,
+.acoes-footer button:focus-visible {
+  background-color: var(--accent);
+  color: var(--paper-alt);
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width: 480px) {
+  .identidade {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contato,
+  .links {
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   IMPRESSÃO
+   ========================================================= */
+@media print {
+  .acoes-footer,
+  #audio-ambiente {
+    display: none;
+  }
+
+  body {
+    background-color: var(--paper-alt);
+  }
+}
